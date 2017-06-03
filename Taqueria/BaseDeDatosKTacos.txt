@@ -1,0 +1,114 @@
+drop database ktacos;
+create Database ktacos;
+use ktacos;
+
+
+create table usuarios(
+id int  NOT NULL AUTO_INCREMENT,
+nombre varchar(35),
+tipo varchar(15),
+pass varchar(35),
+status varchar(5),
+primary key(id));
+
+create table productos(
+id int NOT NULL AUTO_INCREMENT,
+Nombre varchar(45),
+categoria varchar(25),
+unidad varchar(20),
+primary key(id));
+
+create table productosEmpaquetados(
+id int NOT NULL AUTO_INCREMENT,
+Nombre varchar(45),
+costo numeric(7,2),
+precio numeric(7,2),
+cantidad int,
+primary key(id));
+
+create table menu(
+id int NOT NULL AUTO_INCREMENT,
+nombre varchar(50),
+costo numeric(7,2),
+categoria varchar(25),
+status varchar(5),
+primary key(id));
+
+
+create table invtacos(
+id int NOT NULL AUTO_INCREMENT,
+idProd int,
+entrada numeric(7,2),
+salida numeric(7,2),
+fecha date,
+foreign key(idProd)references productos(id),
+primary key(id));
+
+create table invSodas(
+id int NOT NULL AUTO_INCREMENT,
+idProd int,
+entrada numeric(7,2),
+salida numeric(7,2),
+fecha date,
+foreign key(idProd)references productos(id),
+primary key(id));
+
+
+create table venta(
+id int NOT NULL AUTO_INCREMENT,
+fecha date,
+hEntrada time,
+hSalida time,
+nMesa varchar(10),
+id_mesero int,
+total numeric(7,2),
+status varchar(20),
+primary key(id),
+foreign key(id_mesero)references usuarios(id));
+
+
+create table detalleVenta(
+id int NOT NULL AUTO_INCREMENT,
+idVenta int,
+idMenu int,
+cantidad int,
+costo numeric(7,2),
+total numeric(7,2),
+status varchar(20),
+fecha date,
+nOrden int,
+primary key(id),
+FOREIGN KEY(idMenu) REFERENCES menu(id));
+
+
+create table moviliario(
+id int NOT NULL AUTO_INCREMENT,
+nombre varchar(25),
+descripcion varchar(90),
+cantidad int,
+costo numeric(7,2),
+primary key(id));
+
+create table gastos(
+id int NOT NULL AUTO_INCREMENT,
+concepto varchar(30),
+detalles varchar(80),
+fecha date,
+hora time,
+costo numeric(7,2),
+primary key(id));
+
+DELIMITER // 
+CREATE TRIGGER descontarEmpaquetados
+AFTER INSERT ON detalleVenta FOR EACH ROW 
+BEGIN 
+UPDATE productosEmpaquetados SET cantidad = cantidad - new.cantidad where Nombre=(select nombre from menu where id=new.idMenu);
+
+END// 
+
+DELIMITER ;
+
+
+GRANT ALL PRIVILEGES ON `ktacos`.* TO 'ktacos'@'192.168.1.%' IDENTIFIED BY '123456';
+
+GRANT ALL PRIVILEGES ON `ktacos`.* TO 'ktacos'@'localhost' IDENTIFIED BY '123456';
