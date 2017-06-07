@@ -1,4 +1,0 @@
-taqueria.terminal
-taqueria.SocketServidor
-taqueria.serverRecibe
-taqueria.ordenAEnviar

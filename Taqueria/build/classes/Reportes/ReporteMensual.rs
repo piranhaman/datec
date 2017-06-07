@@ -1,2 +1,0 @@
-Reportes.ReporteMensual
-Reportes.objToGrafica

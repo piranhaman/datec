@@ -1,2 +1,0 @@
-Reportes.PDFVentasDia
-Reportes.Membrete

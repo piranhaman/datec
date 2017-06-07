@@ -1,2 +1,0 @@
-taqueria.terminalProduccion
-taqueria.FormatoTabla

@@ -1,2 +1,0 @@
-taqueria.ServidorTablets
-taqueria.hiloServidor

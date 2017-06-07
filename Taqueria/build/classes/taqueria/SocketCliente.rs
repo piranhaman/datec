@@ -1,4 +1,0 @@
-taqueria.terminalCliente
-taqueria.ClienteEnvia
-taqueria.ClienteRecibe
-taqueria.SocketCliente
