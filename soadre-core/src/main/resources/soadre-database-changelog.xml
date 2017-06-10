@@ -1,0 +1,22 @@
+<databaseChangeLog 
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd 
+   http://www.liquibase.org/xml/ns/dbchangelog 
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+     
+    <changeSet author="daniel.gonzalez" id="2017-06-10_12:54">
+        <sql>
+            create table Usuarios(
+            id int  NOT NULL AUTO_INCREMENT,
+            nombre varchar(255),
+            tipo varchar(255),
+            pass varchar(255),
+            status varchar(10),
+            primary key(id));
+        </sql>
+    </changeSet>
+     
+</databaseChangeLog>

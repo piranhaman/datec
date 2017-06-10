@@ -6,8 +6,11 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 import com.datec.soadre.core.frames.Login;
 import java.awt.EventQueue;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
+@ComponentScan(basePackages={"com.datec.*"})
+@EnableAutoConfiguration
 public class Application extends Login{
 
     public Application() {

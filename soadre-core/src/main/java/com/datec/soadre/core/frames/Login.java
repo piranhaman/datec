@@ -28,7 +28,7 @@ public class Login extends JFrame {
     public Login() {
         this.setUndecorated(true);
         initComponents();
-//        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/LOGO.png")).getImage());
+//        setIconImage(getIconImage());
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -40,13 +40,13 @@ public class Login extends JFrame {
         this.setVisible(true);
     }
 
-//    @Override
-//    public Image getIconImage() {
-//        Image retValue = Toolkit.getDefaultToolkit().
-//                getImage(ClassLoader.getSystemResource("/Imagenes/LOGO.png"));
-//
-//        return retValue;
-//    }
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().
+                getImage(ClassLoader.getSystemResource("/Imagenes/LOGO.png"));
+
+        return retValue;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -151,7 +151,6 @@ public class Login extends JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 //        ingresar();
-// TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jPasswordField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyReleased
@@ -159,7 +158,6 @@ public class Login extends JFrame {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
 //            ingresar();
         }
-        // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordField1KeyReleased
 
     private void jPasswordField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyTyped
@@ -168,13 +166,11 @@ public class Login extends JFrame {
         if((caracter == '\'')||(caracter == '\"')){
             evt.consume();  // ignorar el evento de teclado
         }
-        // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordField1KeyTyped
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
 
         this.dispose();
-        // TODO add your handling code here:
     }//GEN-LAST:event_jMenu1MouseClicked
 
     
