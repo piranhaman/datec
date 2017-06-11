@@ -9,14 +9,18 @@
      
     <changeSet author="daniel.gonzalez" id="2017-06-10_12:54">
         <sql>
-            create table Usuarios(
+            create table Usuario(
             id int  NOT NULL AUTO_INCREMENT,
             nombre varchar(255),
-            tipo varchar(255),
+            tipoUsuario varchar(255),
             pass varchar(255),
             status varchar(10),
             primary key(id));
         </sql>
     </changeSet>
-     
+    <changeSet author="daniel.gonzalez" id="2017-06-11_12:49">
+        <sql>
+            insert into Usuario (nombre, tipoUsuario, pass, status) values ("Admin", "ADMINISTRADOR", "123456", "ACTIVO");
+        </sql>
+    </changeSet>
 </databaseChangeLog>

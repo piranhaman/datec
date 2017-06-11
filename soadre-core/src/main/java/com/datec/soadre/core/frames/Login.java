@@ -5,12 +5,18 @@
  */
 package com.datec.soadre.core.frames;
 
+import com.datec.soadre.core.entities.Usuario;
+import com.datec.soadre.core.enums.EmptyCollectionCheck;
+import com.datec.soadre.core.services.UsuarioService;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
+import java.util.List;
 import javax.swing.JFrame;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
 /**
  *
  * @author piranhaman
@@ -18,12 +24,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class Login extends JFrame {
 
+    @Autowired
+    private UsuarioService usuarioService;
+
     /**
      * Creates new form Login
      */
-    public static String IP="";
-    public static String userDB="root";
-    public static String passDB="";
+    public static String IP = "";
+    public static String userDB = "root";
+    public static String passDB = "";
 
     public Login() {
         this.setUndecorated(true);
@@ -32,10 +41,10 @@ public class Login extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setResizable(false);
-//        getUsuarios();
+        getUsuarios();
         jPasswordField1.requestFocusInWindow();
     }
-    
+
     public void prepareAndOpenFrame() {
         this.setVisible(true);
     }
@@ -163,7 +172,7 @@ public class Login extends JFrame {
     private void jPasswordField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyTyped
 
         char caracter = evt.getKeyChar();
-        if((caracter == '\'')||(caracter == '\"')){
+        if ((caracter == '\'') || (caracter == '\"')) {
             evt.consume();  // ignorar el evento de teclado
         }
     }//GEN-LAST:event_jPasswordField1KeyTyped
@@ -173,7 +182,6 @@ public class Login extends JFrame {
         this.dispose();
     }//GEN-LAST:event_jMenu1MouseClicked
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -186,4 +194,13 @@ public class Login extends JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPasswordField jPasswordField1;
     // End of variables declaration//GEN-END:variables
+
+    @Transactional
+    private void getUsuarios() {
+        List<Usuario> usuarios = usuarioService.buscarUsuarios(EmptyCollectionCheck.EXCEPTION_IF_EMPTY);
+        usuarios.forEach((usuario) -> {
+            jComboBox1.addItem(usuario.getNombre());
+        });
+    }
+   
 }
