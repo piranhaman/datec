@@ -5,6 +5,7 @@
  */
 package com.datec.soadre.core.configuracion;
 
+import com.datec.soadre.core.exceptions.BusinessException;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import java.beans.PropertyVetoException;
 import java.util.logging.Level;
@@ -37,7 +38,7 @@ public class DataSourceConfiguration {
         dataSource.setJdbcUrl(configuration.getDatabaseUrl());
         dataSource.setUser(configuration.getDatabaseUser());
         dataSource.setPassword(configuration.getDatabasePassword());
-        // Para cuando se desconecte por mucho tiempo de la base se vuelva a reconectar
+
         dataSource.setTestConnectionOnCheckout(true);
         try {
             dataSource.setDriverClass("com.mysql.jdbc.Driver");

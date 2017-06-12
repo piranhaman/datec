@@ -5,6 +5,7 @@
  */
 package com.datec.soadre.core.exceptions;
 
+import java.beans.PropertyVetoException;
 import jdk.nashorn.internal.runtime.regexp.joni.exception.InternalException;
 
 /**

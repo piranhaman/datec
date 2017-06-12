@@ -6,6 +6,7 @@
 package com.datec.soadre.core.configuracion;
 
 
+import com.datec.soadre.core.exceptions.BusinessException;
 import com.google.gson.Gson;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -14,14 +15,15 @@ import java.util.logging.Logger;
 import jdk.nashorn.internal.runtime.regexp.joni.exception.InternalException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.util.StringUtils;
 
 /**
  *
- * @author edgar <eluna@nxtview.com>
+ * @author other
  */
-@org.springframework.context.annotation.Configuration
+@Configuration
 @Lazy (true)
 public class ConfiguracionService {
 
@@ -34,7 +36,7 @@ public class ConfiguracionService {
     public SoadreConfiguration configuration() {
         SoadreConfiguration configuracionSistema = null;
         if (StringUtils.isEmpty(appName)) {
-            throw new InternalException("No se ha configurado el nombre de la aplicación");
+            throw new BusinessException("No se ha configurado el nombre de la aplicación");
         }
         String archivoConfiguracion = CARPETA_BASE + "/" + appName + ".config";
         String rutaAplicacion = CARPETA_BASE + "/" + appName;

@@ -5,8 +5,6 @@
  */
 package com.datec.soadre.core.configuracion;
 
-
-import com.datec.soadre.core.configuracion.DataSourceConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,7 +22,7 @@ public class LiquibaseConfiguration {
     @Bean
     public SpringLiquibase liquibase() {
         SpringLiquibase liquibase = new SpringLiquibase();
-        liquibase.setDataSource(dataSourceConfiguration.dataSource());        
+        liquibase.setDataSource(dataSourceConfiguration.dataSource());
         liquibase.setChangeLog("classpath:soadre-database-changelog.xml");
         return liquibase;
     }

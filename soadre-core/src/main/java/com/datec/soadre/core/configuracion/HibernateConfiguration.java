@@ -5,9 +5,8 @@
  */
 package com.datec.soadre.core.configuracion;
 
+import com.datec.soadre.core.exceptions.BusinessException;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -32,13 +31,13 @@ public class HibernateConfiguration {
         factoryBean.setDataSource(dataSourceConfiguration.dataSource());
         Properties properties = new Properties();
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-        properties.setProperty("hibernate.show_sql", Boolean.toString(true));
+        properties.setProperty("hibernate.show_sql", Boolean.toString(false));
         factoryBean.setHibernateProperties(properties);
         factoryBean.setPackagesToScan("com.datec.soadre");
         try {
             factoryBean.afterPropertiesSet();
         } catch (Exception ex) {
-            Logger.getLogger(DataSourceConfiguration.class.getName()).log(Level.SEVERE, null, ex);
+            throw  new BusinessException("Error al configurar Hibernate");
         }
         return (SessionFactory) factoryBean.getObject();
     }

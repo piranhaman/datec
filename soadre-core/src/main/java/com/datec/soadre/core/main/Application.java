@@ -11,7 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @ComponentScan(basePackages={"com.datec.*"})
 @EnableAutoConfiguration
-public class Application extends Login{
+public class Application{
 
     public Application() {
         super();
@@ -23,7 +23,7 @@ public class Application extends Login{
                 .headless(false).run(args);
 
         EventQueue.invokeLater(() -> {
-            Application ex = ctx.getBean(Application.class);
+            Login ex = ctx.getBean(Login.class);
             ex.prepareAndOpenFrame();
         });
     }

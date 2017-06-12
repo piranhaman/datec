@@ -12,19 +12,20 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.swing.JFrame;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author piranhaman
  */
-@Component
+@Controller
 public class Login extends JFrame {
 
-    @Autowired
     private UsuarioService usuarioService;
 
     /**
@@ -34,7 +35,9 @@ public class Login extends JFrame {
     public static String userDB = "root";
     public static String passDB = "";
 
-    public Login() {
+    @Autowired
+    public Login( UsuarioService usuarioService) {
+        this.usuarioService = usuarioService;
         this.setUndecorated(true);
         initComponents();
 //        setIconImage(getIconImage());
@@ -44,7 +47,7 @@ public class Login extends JFrame {
         getUsuarios();
         jPasswordField1.requestFocusInWindow();
     }
-
+    
     public void prepareAndOpenFrame() {
         this.setVisible(true);
     }
