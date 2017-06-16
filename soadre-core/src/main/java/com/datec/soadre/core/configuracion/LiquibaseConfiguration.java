@@ -5,6 +5,7 @@
  */
 package com.datec.soadre.core.configuracion;
 
+import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +21,7 @@ public class LiquibaseConfiguration {
     private DataSourceConfiguration dataSourceConfiguration;
 
     @Bean
+    @PostConstruct
     public SpringLiquibase liquibase() {
         SpringLiquibase liquibase = new SpringLiquibase();
         liquibase.setDataSource(dataSourceConfiguration.dataSource());
