@@ -9,9 +9,10 @@ package com.datec.soadre.core.enums;
  *
  * @author Piranhaman
  */
-public enum EstatusUsuario {
-    ACTIVO("Activo"),
-    INACTIVO("Inactivo");
+public enum EstatusDetalleCuenta {
+    PRODUCCION("Produccion"),
+    TERMINADO("Terminado"),
+    MERMADO("Mermado");
 
     private final String descripcion;
 
@@ -19,7 +20,7 @@ public enum EstatusUsuario {
         return descripcion;
     }
 
-    EstatusUsuario(String descripcion) {
+    EstatusDetalleCuenta(String descripcion) {
         this.descripcion = descripcion;
     }
 

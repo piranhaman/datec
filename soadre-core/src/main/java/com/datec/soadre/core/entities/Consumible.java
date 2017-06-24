@@ -5,8 +5,10 @@
  */
 package com.datec.soadre.core.entities;
 
+import com.datec.soadre.core.enums.AreaProductiva;
 import com.datec.soadre.core.enums.Estatus;
 import com.datec.soadre.core.enums.TipoUsuario;
+import com.datec.soadre.core.enums.UnidadDeMedida;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -19,7 +21,7 @@ import javax.persistence.Id;
  * @author Piranhaman
  */
 @Entity
-public class Usuario implements Serializable {
+public class Consumible implements Serializable {
 
     @Id
     @GeneratedValue
@@ -32,17 +34,13 @@ public class Usuario implements Serializable {
     private String nombre;
     
     @Enumerated(EnumType.STRING)
-    public TipoUsuario getTipoUsuario() { return tipoUsuario; }
-    public void setTipoUsuario(TipoUsuario tipoUsuario) { this.tipoUsuario = tipoUsuario; }
-    private TipoUsuario tipoUsuario;
-    
-    public String getPass() { return pass; }
-    public void setPass(String pass) { this.pass = pass; }
-    private String pass;
+    public AreaProductiva getAreaProductiva() { return areaProductiva; }
+    public void setAreaProductiva(AreaProductiva areaProductiva) { this.areaProductiva = areaProductiva; }
+    private AreaProductiva areaProductiva;
     
     @Enumerated(EnumType.STRING)
-    public Estatus getStatus() { return status; }
-    public void setStatus(Estatus status) { this.status = status; }
-    private Estatus status;
+    public UnidadDeMedida getUnidadDeMedida() { return unidadDeMedida; }
+    public void setUnidadDeMedida(UnidadDeMedida unidadDeMedida) { this.unidadDeMedida = unidadDeMedida; }
+    private UnidadDeMedida unidadDeMedida;
     
 }

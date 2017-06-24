@@ -7,7 +7,7 @@ package com.datec.soadre.core.services;
 
 import com.datec.soadre.core.entities.Usuario;
 import com.datec.soadre.core.enums.EmptyCollectionCheck;
-import com.datec.soadre.core.enums.EstatusUsuario;
+import com.datec.soadre.core.enums.Estatus;
 import com.datec.soadre.core.enums.ExistCheck;
 import com.datec.soadre.core.enums.NullCheck;
 import com.datec.soadre.core.exceptions.BusinessException;
@@ -53,7 +53,7 @@ public class UsuarioService {
     }
     
     @Transactional
-    public List<Usuario> buscarUsuariosPorEstatus(EstatusUsuario estatusUsuario,EmptyCollectionCheck emptyCollectionCheck){
+    public List<Usuario> buscarUsuariosPorEstatus(Estatus estatusUsuario,EmptyCollectionCheck emptyCollectionCheck){
         List<Usuario> usuario;
        
         usuario = (List<Usuario>) sessionFactory.getCurrentSession().createQuery("Select u from Usuario u where u.status=:status")

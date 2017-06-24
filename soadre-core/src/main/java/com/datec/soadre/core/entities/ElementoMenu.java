@@ -5,8 +5,11 @@
  */
 package com.datec.soadre.core.entities;
 
+import com.datec.soadre.core.enums.AreaProductiva;
+import com.datec.soadre.core.enums.Estatus;
 import com.datec.soadre.core.enums.Estatus;
 import com.datec.soadre.core.enums.TipoUsuario;
+import com.datec.soadre.core.enums.UnidadDeMedida;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -19,7 +22,7 @@ import javax.persistence.Id;
  * @author Piranhaman
  */
 @Entity
-public class Usuario implements Serializable {
+public class ElementoMenu implements Serializable {
 
     @Id
     @GeneratedValue
@@ -31,18 +34,18 @@ public class Usuario implements Serializable {
     public void setNombre(String nombre) { this.nombre = nombre; }
     private String nombre;
     
-    @Enumerated(EnumType.STRING)
-    public TipoUsuario getTipoUsuario() { return tipoUsuario; }
-    public void setTipoUsuario(TipoUsuario tipoUsuario) { this.tipoUsuario = tipoUsuario; }
-    private TipoUsuario tipoUsuario;
-    
-    public String getPass() { return pass; }
-    public void setPass(String pass) { this.pass = pass; }
-    private String pass;
+    public Double getCosto() { return costo; }
+    public void setCosto(Double costo) { this.costo = costo; }
+    private Double costo;
     
     @Enumerated(EnumType.STRING)
-    public Estatus getStatus() { return status; }
-    public void setStatus(Estatus status) { this.status = status; }
-    private Estatus status;
+    public AreaProductiva getAreaProductiva() { return areaProductiva; }
+    public void setAreaProductiva(AreaProductiva areaProductiva) { this.areaProductiva = areaProductiva; }
+    private AreaProductiva areaProductiva;
+    
+    @Enumerated(EnumType.STRING)
+    public Estatus getEstatus() { return estatus; }
+    public void setEstatus(Estatus estatus) { this.estatus = estatus; }
+    private Estatus estatus;
     
 }

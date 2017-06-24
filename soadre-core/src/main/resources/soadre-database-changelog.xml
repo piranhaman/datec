@@ -14,16 +14,122 @@ and open the template in the editor.
         <sql>
             create table Usuario(
             id int  NOT NULL AUTO_INCREMENT,
-            nombre varchar(255),
+            nombre      varchar(255),
             tipoUsuario varchar(255),
-            pass varchar(255),
-            status varchar(10),
+            pass        varchar(255),
+            status      varchar(10),
             primary key(id));
         </sql>
     </changeSet>
     <changeSet author="daniel.gonzalez" id="2017-06-11_12:49">
         <sql>
             insert into Usuario (nombre, tipoUsuario, pass, status) values ("Admin", "ADMINISTRADOR", "123456", "ACTIVO");
+        </sql>
+    </changeSet>
+    <changeSet author="daniel.gonzalez" id="2017-06-24_12:01">
+        <sql>
+            create table Consumible (
+            id int NOT NULL AUTO_INCREMENT,
+            nombre          varchar(64),
+            unidadDeMedida  varchar(25),
+            areaProductiva  varchar(25),
+            primary key(id));
+        </sql>
+    </changeSet>
+    <changeSet author="daniel.gonzalez" id="2017-06-24_12:02">
+        <sql>
+            create table ProductoEmpaquetado (
+            id int NOT NULL AUTO_INCREMENT,
+            nombre      varchar(64),
+            costo       numeric(10,2),
+            precio      numeric(10,2),
+            cantidad    int,
+            primary key(id));
+        </sql>
+    </changeSet>
+    <changeSet author="daniel.gonzalez" id="2017-06-24_12:03">
+        <sql>
+            create table ElementoMenu (
+            id int NOT NULL AUTO_INCREMENT,
+            nombre      varchar(64),
+            costo       numeric(10,2),
+            areaProductiva   varchar(25),
+            estatus     varchar(5),
+            primary key(id));
+        </sql>
+    </changeSet>
+    <changeSet author="daniel.gonzalez" id="2017-06-24_12:30">
+        <sql>
+            create table Inventario (
+            id int NOT NULL AUTO_INCREMENT,
+            consumibleId      int,
+            cantidadInicial     numeric(10,2),
+            cantidadFinal       numeric(10,2),
+            fecha               date,
+            areaProductiva   varchar(25),
+            primary key(id),
+            foreign key(consumibleId)references Consumible(id));
+        </sql>
+    </changeSet>
+    <changeSet author="daniel.gonzalez" id="2017-06-24_12:35">
+        <sql>
+            create table Cuenta (
+            id int NOT NULL AUTO_INCREMENT,
+            usuarioId    int,
+            fecha       date,
+            horaApertura    time,
+            horaCierre      time,
+            numeroMesa      varchar(10),
+            total           numeric(10,2),
+            estatus         varchar(20),
+            primary key(id),
+            foreign key(usuarioId)references Usuario(id));
+        </sql>
+    </changeSet>
+    <changeSet author="daniel.gonzalez" id="2017-06-24_12:41">
+        <sql>           
+            create table DetalleCuenta (
+            id int NOT NULL AUTO_INCREMENT,
+            cuentaId        int,
+            elementoMenuId  int,
+            cantidad        int,
+            costo           numeric(10,2),
+            total           numeric(10,2),
+            estatus          varchar(20),
+            nOrden      int,
+            primary key(id),
+            FOREIGN KEY(elementoMenuId) REFERENCES ElementoMenu(id));
+        </sql>
+    </changeSet>
+    <changeSet author="daniel.gonzalez" id="2017-06-24_12:50">
+        <sql>
+            create table Moviliario (
+            id int NOT NULL AUTO_INCREMENT,
+            nombre varchar(64),
+            descripcion varchar(128),
+            cantidad int,
+            costo numeric(10,2),
+            primary key(id));
+        </sql>
+    </changeSet>
+    <changeSet author="daniel.gonzalez" id="2017-06-24_15:32">
+        <sql>
+            create table Gasto (
+            id int NOT NULL AUTO_INCREMENT,
+            concepto varchar(30),
+            detalles varchar(80),
+            fecha datetime,
+            costo numeric(10,2),
+            primary key(id));
+        </sql>
+    </changeSet>
+    <changeSet author="daniel.gonzalez" id="2017-06-24_15:33">
+        <sql endDelimiter="//">
+            CREATE TRIGGER descontarEmpaquetados
+            AFTER INSERT ON DetalleCuenta FOR EACH ROW 
+            BEGIN 
+            UPDATE ProductoEmpaquetado SET cantidad = cantidad - new.cantidad where nombre=(select nombre from ElementoMenu where id=new.elementoMenuId);
+            END// 
         </sql>
     </changeSet>
 </databaseChangeLog>

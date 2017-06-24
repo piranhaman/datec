@@ -7,6 +7,8 @@ package com.datec.soadre.core.configuracion;
 
 import com.datec.soadre.core.exceptions.BusinessException;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -18,7 +20,7 @@ import org.springframework.context.annotation.Lazy;
  * @author other
  */
 @Configuration
-@Lazy (true)
+@Lazy(true)
 public class HibernateConfiguration {
 
     @Autowired
@@ -37,7 +39,7 @@ public class HibernateConfiguration {
         try {
             factoryBean.afterPropertiesSet();
         } catch (Exception ex) {
-            throw  new BusinessException("Error al configurar Hibernate");
+            Logger.getLogger(HibernateConfiguration.class.getName()).log(Level.SEVERE, null, ex);
         }
         return (SessionFactory) factoryBean.getObject();
     }
