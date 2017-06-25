@@ -67,6 +67,30 @@ public class UsuarioService {
     }
     
     @Transactional
+    public Usuario buscarUsuarioPorNombreContraseña(String nombreUsuario, String pass, NullCheck nullCheck, ExistCheck existCheck){
+        Usuario usuario;
+        if (nombreUsuario == null || pass == null) {
+            switch (nullCheck) {
+                case SAFE_NULL:
+                    return null;
+                case EXCEPTION_IF_NULL:
+                default:
+                    throw new BusinessException("Debe de proporcionar un nombre de usuario y una contraseña");
+            }
+        }
+       
+        usuario = (Usuario) sessionFactory.getCurrentSession().createQuery("Select u from Usuario u where u.nombre =:nombre and u.pass =:pass")
+                .setParameter("nombre", nombreUsuario)
+                .setParameter("pass", pass)
+                .uniqueResult();
+        
+        if(usuario==null && existCheck == ExistCheck.EXCEPTION_IF_NOT_EXIST){
+            throw new BusinessException("No existe el usuario con el nombre: '"+nombreUsuario+"' y la contraseña: '"+pass+"'");
+        }        
+        return usuario;
+    }
+    
+    @Transactional
     public List<Usuario> buscarUsuarios(EmptyCollectionCheck emptyCollectionCheck){
         List<Usuario> usuario;
        

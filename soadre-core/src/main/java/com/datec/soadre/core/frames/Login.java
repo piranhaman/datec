@@ -7,6 +7,9 @@ package com.datec.soadre.core.frames;
 
 import com.datec.soadre.core.entities.Usuario;
 import com.datec.soadre.core.enums.EmptyCollectionCheck;
+import com.datec.soadre.core.enums.ExistCheck;
+import com.datec.soadre.core.enums.NullCheck;
+import com.datec.soadre.core.exceptions.BusinessException;
 import com.datec.soadre.core.services.UsuarioService;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -25,13 +28,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class Login extends JFrame {
 
     private UsuarioService usuarioService;
-
-    /**
-     * Creates new form Login
-     */
-    public static String IP = "";
-    public static String userDB = "root";
-    public static String passDB = "";
 
     @Autowired
     public Login( UsuarioService usuarioService) {
@@ -54,7 +50,6 @@ public class Login extends JFrame {
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().
                 getImage(ClassLoader.getSystemResource("/Imagenes/LOGO.png"));
-
         return retValue;
     }
 
@@ -160,13 +155,12 @@ public class Login extends JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-//        ingresar();
+        accederASistema();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jPasswordField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyReleased
-
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-//            ingresar();
+            accederASistema();
         }
     }//GEN-LAST:event_jPasswordField1KeyReleased
 
@@ -202,6 +196,28 @@ public class Login extends JFrame {
         usuarios.forEach((usuario) -> {
             jComboBox1.addItem(usuario.getNombre());
         });
+    }
+    
+    private void accederASistema(){
+        String nombreUsuario = jComboBox1.getSelectedItem().toString();
+        String pass = jPasswordField1.getText();
+        Usuario usuario = usuarioService.buscarUsuarioPorNombreContraseña(nombreUsuario, pass, NullCheck.EXCEPTION_IF_NULL, ExistCheck.EXCEPTION_IF_NOT_EXIST);
+        
+        switch(usuario.getTipoUsuario()){
+            case ADMINISTRADOR:
+//                Principal
+                break;
+            case CAJERO:
+//                Caja
+                break;
+            case FUENTE_DE_SODAS:
+            case TAQUERO:
+//                terminalProduccion
+                break;
+            case MESERO:
+                throw new BusinessException("Los usuarios de tipo Mesero no pueden acceder a esta aplicacion.");
+        }
+        
     }
    
 }
