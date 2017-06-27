@@ -38,7 +38,7 @@ public class UsuarioService {
                     return null;
                 case EXCEPTION_IF_NULL:
                 default:
-                    throw new BusinessException("Debe de proporcionar un id de la carga");
+                    throw new BusinessException("Debe de proporcionar un id de usuario");
             }
         }
         

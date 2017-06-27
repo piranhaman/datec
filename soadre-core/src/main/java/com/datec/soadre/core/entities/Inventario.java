@@ -7,6 +7,7 @@ package com.datec.soadre.core.entities;
 
 import com.datec.soadre.core.enums.AreaProductiva;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -31,10 +32,6 @@ public class Inventario implements Serializable {
     public void setId(Integer id) { this.id = id; }
     private Integer id;
     
-    public String getNombre() { return nombre; }
-    public void setNombre(String nombre) { this.nombre = nombre; }
-    private String nombre;
-    
     public Double getCantidadInicial() { return cantidadInicial; }
     public void setCantidadInicial(Double cantidadInicial) { this.cantidadInicial = cantidadInicial; }
     private Double cantidadInicial;
@@ -44,9 +41,9 @@ public class Inventario implements Serializable {
     private Double cantidadFinal;
     
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
-    public Date getFecha() { return fecha; }
-    public void setFecha(Date fecha) { this.fecha = fecha; }
-    private Date fecha;
+    public LocalDate getFecha() { return fecha; }
+    public void setFecha(LocalDate fecha) { this.fecha = fecha; }
+    private LocalDate fecha;
     
     @Enumerated(EnumType.STRING)
     public AreaProductiva getAreaProductiva() { return areaProductiva; }

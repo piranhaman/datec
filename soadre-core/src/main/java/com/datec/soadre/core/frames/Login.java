@@ -28,10 +28,12 @@ import org.springframework.transaction.annotation.Transactional;
 public class Login extends JFrame {
 
     private UsuarioService usuarioService;
+    private PanelDeControl panelDeControl;
 
     @Autowired
-    public Login( UsuarioService usuarioService) {
+    public Login( UsuarioService usuarioService, PanelDeControl panelDeControl) {
         this.usuarioService = usuarioService;
+        this.panelDeControl = panelDeControl;
         this.setUndecorated(true);
         initComponents();
 //        setIconImage(getIconImage());
@@ -205,7 +207,7 @@ public class Login extends JFrame {
         
         switch(usuario.getTipoUsuario()){
             case ADMINISTRADOR:
-//                Principal
+                panelDeControl.prepareAndShow();
                 break;
             case CAJERO:
 //                Caja
