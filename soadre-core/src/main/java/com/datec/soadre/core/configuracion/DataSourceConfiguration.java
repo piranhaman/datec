@@ -48,11 +48,11 @@ public class DataSourceConfiguration {
         return dataSource;
     }
 
-    @Bean
-    @Lazy
-    public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
-        HibernateTransactionManager txManager = new HibernateTransactionManager();
-        txManager.setSessionFactory(sessionFactory);
-        return txManager;
-    }
+//    @Bean
+//    @Lazy
+//    public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
+//        HibernateTransactionManager txManager = new HibernateTransactionManager();
+//        txManager.setSessionFactory(sessionFactory);
+//        return txManager;
+//    }
 }

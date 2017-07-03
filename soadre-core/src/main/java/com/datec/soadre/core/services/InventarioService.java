@@ -14,7 +14,6 @@ import com.datec.soadre.core.enums.Estatus;
 import com.datec.soadre.core.enums.ExistCheck;
 import com.datec.soadre.core.enums.NullCheck;
 import com.datec.soadre.core.exceptions.BusinessException;
-import static com.datec.soadre.core.frames.PanelDeControl.getFechaMenosCincoHoras;
 import java.time.LocalDate;
 import java.util.List;
 import org.hibernate.SessionFactory;
@@ -102,7 +101,8 @@ public class InventarioService {
 
         List<Consumible> consumibles = consumibleService.buscarConsumiblesPorArenaProductiva(areaProductiva, EmptyCollectionCheck.EMPTY_COLLECTION);
 
-        LocalDate fechaMenosCincoHoras = getFechaMenosCincoHoras();
+//        LocalDate fechaMenosCincoHoras = getFechaMenosCincoHoras();
+        LocalDate fechaMenosCincoHoras = LocalDate.now();
 
         consumibles.stream().forEach(c -> {
             Inventario inventario = buscarInventarioPorArenaProductivaFechaYConsumible(areaProductiva, fechaMenosCincoHoras, c, NullCheck.EXCEPTION_IF_NULL, ExistCheck.NULL_IF_NOT_EXIST);

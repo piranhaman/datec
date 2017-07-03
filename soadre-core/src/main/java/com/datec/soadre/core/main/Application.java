@@ -2,11 +2,7 @@ package com.datec.soadre.core.main;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.context.ConfigurableApplicationContext;
-import com.datec.soadre.core.frames.Login;
-import com.datec.soadre.core.util.LookAndFeelUtil;
-import java.awt.EventQueue;
+import org.springframework.boot.SpringApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
@@ -14,19 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableAutoConfiguration
 public class Application {
 
-    public Application() {
-        super();
-    }
-
     public static void main(String[] args) {
-        ConfigurableApplicationContext ctx = new SpringApplicationBuilder(Application.class)
-                .headless(false).run(args);
-
-        EventQueue.invokeLater(() -> {
-            LookAndFeelUtil.setWindowsLookAndFeel();
-            Login ex = ctx.getBean(Login.class);
-            ex.prepareAndOpenFrame();
-        });
+        SpringApplication.run(Application.class, args);
     }
-
 }

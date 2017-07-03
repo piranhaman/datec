@@ -1,21 +1,33 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
 package com.datec.soadre.core.exceptions;
 
-import java.beans.PropertyVetoException;
-import jdk.nashorn.internal.runtime.regexp.joni.exception.InternalException;
+import java.util.List;
 
-/**
- *
- * @author Piranhaman
- */
-public class BusinessException extends InternalException{
+public class BusinessException extends ApplicationException {
+    private List<String> mensajesAdicionales;
 
-    public BusinessException(String mensaje) {
-        super(mensaje);
+    public BusinessException(String message) {
+        super(message);        
+    }
+    
+    public BusinessException(String message, List<String> mensajesAdicionales) {
+        super(message);
+        this.mensajesAdicionales = mensajesAdicionales;
+    }
+
+    public BusinessException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public List<String> getMensajesAdicionales() {
+        return mensajesAdicionales;
+    }
+
+    public void setMensajesAdicionales(List<String> mensajesAdicionales) {
+        this.mensajesAdicionales = mensajesAdicionales;
     }
 
 }
