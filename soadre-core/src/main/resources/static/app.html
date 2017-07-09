@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>NXTVIEW</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="js/lib/angularjs/angular.js"></script>    
+        <script type="text/javascript" src="js/lib/jquery/dist/jquery.js"></script>    
+        <script type="text/javascript" src="js/lib/angular-bootstrap-toggle/dist/angular-bootstrap-toggle.min.js"></script>
+        <script type="text/javascript" src="js/lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>            
+        <script type="text/javascript" src="js/lib/angular-ui-router/release/angular-ui-router.js"></script>
+        <script type="text/javascript" src="js/lib/angular-ui-router.stateHelper/statehelper.js"></script>
+        <script type="text/javascript" src="js/lib/angular-resource/angular-resource.js"></script>
+        <script type="text/javascript" src="js/lib/angular-simple-logger/dist/angular-simple-logger.js"></script>
+        <script type="text/javascript" src="js/lib/angular-bootstrap-multiselect/angular-bootstrap-multiselect.js"></script>
+        <script type="text/javascript" src="js/lib/file-saver/FileSaver.js"></script>
+        <script type="text/javascript" src="js/lib/google-jsapi/index"></script>
+        <script type="text/javascript" src="js/lib/angular-smart-table/dist/smart-table.js"></script>
+        <script type="text/javascript" src="js/lib/bootstrap/js/collapse.js"></script>
+        <script type="text/javascript" src="js/lib/angular-google-maps/dist/angular-google-maps.js"></script>
+        <script type="text/javascript" src="js/lib/lodash/dist/lodash.js"></script>
+        <script type="text/javascript" src="js/lib/d3/d3.js"></script>                              
+        <script type="text/javascript" src="js/lib/ng-file-upload/ng-file-upload.js"></script>  
+        <script type="text/javascript" src="js/lib/angular-locale_es/index.js"></script>        
+        <script type="text/javascript" src="js/lib/handsontable/dist/handsontable.full.js"></script>
+        <script type="text/javascript" src="js/lib/ngHandsontable/dist/ngHandsontable.js"></script>
+        <link rel="shortcut icon" href="img/favicon.ico"/>
+        <link rel="stylesheet" type="text/css" href="css/lib/bootstrap.css" />     
+        <link rel="stylesheet" href="css/style.css">     
+        <link rel="stylesheet" href="css/footer.css">
+        <link rel="stylesheet" type="text/css" href="js/lib/angular-bootstrap-toggle/dist/angular-bootstrap-toggle.min.css"/> 
+        <link rel="stylesheet" href="css/navbar.css">
+        <link rel="stylesheet" type="text/css" href="css/sumex-socios.css">
+        <link rel="stylesheet" type="text/css" href="js/lib/handsontable/dist/handsontable.full.css">        
+        <script type="text/javascript">
+            var app = angular.module("app", ['ngHandsontable', 'ngResource', 'ui.router', 'ui.router.stateHelper', 'ngFileUpload', 'ui.bootstrap', 'ui.multiselect', 'uiGmapgoogle-maps', 'ui.toggle']);
+            google.load('visualization', '1', {
+                packages: ['corechart']
+            });
+            app.config(function (uiGmapGoogleMapApiProvider) {
+                uiGmapGoogleMapApiProvider.configure({
+                    key: 'AIzaSyDdDhZJtreU2Vj7o080hIrK_3319TwifHo',
+                    v: '3',
+                    libraries: 'weather,geometry,visualization'});
+            });
+            app.config(function ($stateProvider, stateHelperProvider, $urlRouterProvider) {
+                $urlRouterProvider.otherwise("/menu-clientes/clientes");
+
+                stateHelperProvider
+                        .state({
+                            name: 'menu-clientes',
+                            url: '/menu-clientes',
+                            templateUrl: 'menu-clientes.html',
+                            children: [
+                                {
+                                    name: 'clientes',
+                                    url: '/clientes',
+                                    templateUrl: 'clientes.html'
+                                }
+                            ]
+                        })
+                        .state({
+                            name: 'menu-usuarios',
+                            url: '/menu-usuarios',
+                            templateUrl: 'menu-usuarios.html',
+                            children: [
+                                {
+                                    name: 'usuarios',
+                                    url: '/usuarios',
+                                    templateUrl: 'usuarios.html',
+                                    children: [{
+                                            name: 'usuario',
+                                            url: '/usuario/:usuarioId',
+                                            templateUrl: 'usuario.html'
+                                        }]
+                                }
+                            ]
+                        })
+                        .state({
+                            name: 'cliente',
+                            url: '/menu-clientes/clientes/cliente/:clienteId',
+                            templateUrl: 'cliente.html'
+                        })
+                        .state({
+                            name: 'propuesta',
+                            url: '/menu-clientes/clientes/cliente/:clienteId/propuesta/:propuestaId',
+                            templateUrl: 'propuesta.html'
+                        })
+                        .state({
+                            name: 'cambio-contrasena',
+                            url: '/cambio-contrasena',
+                            templateUrl: 'cambio-contrasena.html'
+
+                        });
+            });
+        </script>
+        <!-- Scripts de la aplicación -->
+        <script type="text/javascript" src="js/nxtviewjs/nxtviewjs.js"></script>
+        <script type="text/javascript" src="js/reciboCfe.js"></script>
+        <script type="text/javascript" src="js/ClienteController.js"></script>
+        <script type="text/javascript" src="js/ClientesController.js"></script>
+        <script type="text/javascript" src="js/CambioContrasenaController.js"></script>
+        <script type="text/javascript" src="js/PropuestaController.js"></script>
+        <script type="text/javascript" src="js/UsuarioService.js"></script>
+        <script type="text/javascript" src="js/UsuariosController.js"></script>
+        <script type="text/javascript" src="js/lib/handsontable/dist/handsontable.full.js"></script>
+
+    </head>
+    <body ng-app="app">        
+        <div class="container" ng-controller="HomeController">
+            <div class="row">
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                data-target=".navbar-ex1-collapse">
+                            <span class="sr-only">Desplegar navegación</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand2" href="#">
+                            <img  src="img/nxtview-logo.png" alt="NXTVIEW" style="height: 50px; padding: 10px">
+                        </a>
+                    </div>
+                    <div ng-controller="HomeController" class="collapse navbar-collapse navbar-ex1-collapse">
+                        <ul class="nav navbar-nav navbar-left">
+                            <li ng-class="{ active: $state.includes('menu-clientes.clientes')}"><a ui-sref="menu-clientes.clientes">Clientes</a></li>                            
+                        </ul>
+                        <ul class="nav navbar-nav navbar-left">
+                            <li ng-class="{ active: $state.includes('menu-usuarios.usuarios')}" ng-show="usuario.perfil.esNxtview"><a ui-sref="menu-usuarios.usuarios">Usuarios</a></li>                            
+                        </ul>
+                        <ul  class="nav navbar-nav navbar-right">                                                                                                   
+                            <li>
+                                <a ui-sref="cambio-contrasena">Usuario: {{usuario.username}}{{usuario.username ? ' - ' : ''}}{{usuario.nombre}}</a>
+                            </li>
+                            <li ng-show="usuario.diasRestantes != null">
+                                <a ng-show="usuario.diasRestantes > 0">La licencia expirará en: {{usuario.diasRestantes}} días</a>
+                                <a ng-show="usuario.diasRestantes == 0">La licencia expirará HOY</a>
+                            </li>
+                            <li>
+                                <a href="logout">Cerrar sesión </a>                                    
+                            </li>          
+                        </ul>
+                    </div>
+                </nav>         
+            </div>
+            <div ui-view></div>
+        </div>
+    </body>
+</html>

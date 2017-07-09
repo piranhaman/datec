@@ -22,6 +22,7 @@ public class SoadreConfiguration implements Serializable{
     private String databaseUser;
     private String databasePassword;
     private String databaseUrl;
+    private String webUser;
     
     public String getCarpetaBase() {
         return carpetaBase;
@@ -69,5 +70,13 @@ public class SoadreConfiguration implements Serializable{
 
     public void setDatabaseUrl(String databaseUrl) {
         this.databaseUrl = databaseUrl;
+    }
+
+    public String getWebUser() {
+        return webUser;
+    }
+
+    public void setWebUser(String webUser) {
+        this.webUser = webUser;
     }
 }
