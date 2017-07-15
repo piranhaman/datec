@@ -6,6 +6,10 @@
 package com.datec.soadre.core.api.usuario;
 
 import com.datec.soadre.core.api.AbstractApi;
+import com.datec.soadre.core.enums.ExistCheck;
+import com.datec.soadre.core.enums.NullCheck;
+import com.datec.soadre.core.services.UsuarioService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,11 +19,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UsuarioApi extends AbstractApi {
 
+    @Autowired
+    private UsuarioService usuarioService;
    
-    @RequestMapping(value = "/api/prueba", method = RequestMethod.GET)
+    @RequestMapping(value = "/api/usuario", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
-    public String buscarUsuarioEnSesion() {
-        return "asdasd";
+    public Usuario buscarUsuarioEnSesion() {
+        com.datec.soadre.core.entities.Usuario usuarioEnSession = usuarioService.buscarUsuarioEnSession(NullCheck.EXCEPTION_IF_NULL, ExistCheck.EXCEPTION_IF_NOT_EXIST);
+        return usuarioService.serializarUsuario(usuarioEnSession);
     }
     
 }

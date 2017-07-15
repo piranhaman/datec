@@ -20,10 +20,13 @@ import java.util.Arrays;
  * @author Piranhaman
  */
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
-@JsonDeserialize(using = Estatus.EnumDeserializer.class)
-public enum Estatus {
-    ACTIVO("Activo"),
-    INACTIVO("Inactivo");
+@JsonDeserialize(using = Perfil.EnumDeserializer.class)
+public enum Perfil {
+    ADMINISTRADOR("Administrador"),
+    CAJERO("Cajero"),
+    TAQUERO("Taquero"),
+    FUENTE_DE_SODAS("Fuente de Sodas"),
+    MESERO("Mesero");
 
     private final String descripcion;
 
@@ -31,32 +34,33 @@ public enum Estatus {
         return descripcion;
     }
 
-    Estatus(String descripcion) {
+    Perfil(String descripcion) {
         this.descripcion = descripcion;
     }
 
-    public static class EnumDeserializer extends StdDeserializer<Estatus> {
+    public static class EnumDeserializer extends StdDeserializer<Perfil> {
 
         public EnumDeserializer() {
-            super(Estatus.class);
+            super(Perfil.class);
         }
 
         @Override
-        public Estatus deserialize(JsonParser jp, DeserializationContext dc) throws IOException, JsonProcessingException {
+        public Perfil deserialize(JsonParser jp, DeserializationContext dc) throws IOException, JsonProcessingException {
             String descripcion = jp.readValueAsTree().get("descripcion").toString().replace("\"", "");
-            return Arrays.asList(Estatus.values())
+            return Arrays.asList(Perfil.values())
                     .stream()
                     .filter(m -> m.getDescripcion()
                     .equals(descripcion)).findFirst().get();
         }
     }
 
-    public static Estatus buscarEstatusPorDescripcion(String descripcion) {
-        for (Estatus value : Estatus.values()) {
+    public static Perfil buscarTipoUsuarioPorDescripcion(String descripcion) {
+        for (Perfil value : Perfil.values()) {
             if (value.getDescripcion().equals(descripcion)) {
                 return value;
             }
         }
-        throw new BusinessException("No existe un estatus con la descripcion " + descripcion);
+        throw new BusinessException("No existe el tipo de usuario con la descripcion " + descripcion);
     }
+
 }

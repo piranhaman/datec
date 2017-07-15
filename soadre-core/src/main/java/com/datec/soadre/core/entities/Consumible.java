@@ -7,7 +7,7 @@ package com.datec.soadre.core.entities;
 
 import com.datec.soadre.core.enums.AreaProductiva;
 import com.datec.soadre.core.enums.Estatus;
-import com.datec.soadre.core.enums.TipoUsuario;
+import com.datec.soadre.core.enums.Perfil;
 import com.datec.soadre.core.enums.UnidadDeMedida;
 import java.io.Serializable;
 import javax.persistence.Entity;

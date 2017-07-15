@@ -6,7 +6,7 @@
 package com.datec.soadre.core.entities;
 
 import com.datec.soadre.core.enums.Estatus;
-import com.datec.soadre.core.enums.TipoUsuario;
+import com.datec.soadre.core.enums.Perfil;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -32,9 +32,9 @@ public class Usuario implements Serializable {
     private String nombre;
     
     @Enumerated(EnumType.STRING)
-    public TipoUsuario getTipoUsuario() { return tipoUsuario; }
-    public void setTipoUsuario(TipoUsuario tipoUsuario) { this.tipoUsuario = tipoUsuario; }
-    private TipoUsuario tipoUsuario;
+    public Perfil getPerfil() { return perfil; }
+    public void setPerfil(Perfil perfil) { this.perfil = perfil; }
+    private Perfil perfil;
     
     public String getPass() { return pass; }
     public void setPass(String pass) { this.pass = pass; }

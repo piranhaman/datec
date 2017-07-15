@@ -15,7 +15,7 @@ and open the template in the editor.
             create table Usuario(
             id int  NOT NULL AUTO_INCREMENT,
             nombre      varchar(255),
-            tipoUsuario varchar(255),
+            perfil      varchar(255),
             pass        varchar(255),
             status      varchar(10),
             primary key(id));
@@ -23,7 +23,7 @@ and open the template in the editor.
     </changeSet>
     <changeSet author="daniel.gonzalez" id="2017-06-11_12:49">
         <sql>
-            insert into Usuario (nombre, tipoUsuario, pass, status) values ("Admin", "ADMINISTRADOR", "$2a$10$clodJ1eBbjxbIcmajoGWYe7wE.nLCb.GIX1IH2QGCS6L6PnSPY.j6", "ACTIVO");
+            insert into Usuario (nombre, perfil, pass, status) values ("Admin", "ADMINISTRADOR", "$2a$10$clodJ1eBbjxbIcmajoGWYe7wE.nLCb.GIX1IH2QGCS6L6PnSPY.j6", "ACTIVO");
         </sql>
     </changeSet>
     <changeSet author="daniel.gonzalez" id="2017-06-24_12:01">
