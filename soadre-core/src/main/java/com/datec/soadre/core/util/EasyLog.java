@@ -1,6 +1,3 @@
-/*
- * Nxtview - Copyright - Todos los derechos reservados
- */
 package com.datec.soadre.core.util;
 
 import com.datec.soadre.core.bussines.LogAdvertencias;

@@ -5,12 +5,12 @@
  */
 package com.datec.soadre.core.configuracion;
 
-
 import com.datec.soadre.core.services.generic.AutenticacionService;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -50,7 +50,7 @@ public class SpringWebSecurityConfiguration extends WebSecurityConfigurerAdapter
                     .antMatchers("/login.html").permitAll()
                     .antMatchers("/js/**").permitAll()
                     .antMatchers("/css/**").permitAll()
-                    .antMatchers("/img/**").permitAll()                    
+                    .antMatchers("/img/**").permitAll()
                     .antMatchers("/pagina_error.html").permitAll()
                     .anyRequest().authenticated()
                     .and()

@@ -1,42 +1,43 @@
 <html>
     <head>
-        <title>NXTVIEW</title>
+        <title>SOADRE</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <script type="text/javascript" src="js/lib/angularjs/angular.js"></script>        
         <script type="text/javascript" src="js/lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>    
-        <script type="text/javascript" src="js/lib/angular-route/angular-route.js"></script>
+        <script type="text/javascript" src="js/lib/angular-ui-router/release/angular-ui-router.js"></script>
         <script type="text/javascript" src="js/lib/angular-simple-logger/dist/angular-simple-logger.js"></script>
         <link rel="stylesheet" type="text/css" href="css/lib/bootstrap.css" />
         <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/login-background.css">
+        <link rel="stylesheet" href="css/background.css">
         <link rel="stylesheet" href="css/login-style.css">        
         <link rel="stylesheet" href="css/bootstrap-login.css">        
-        
+
         <form method="post">
             <div class="vertical-center">
                 <div class="container">                                     
-                    <div class="row col-sm-12 col-sm-4 col-md-4 col-lg-2">
+                    <div class="row col-md-4 col-md-offset-4 text-center">
                         <!--<h3 style="text-align: center; color: white">SUMEX</h3>-->                        
-                        <h3 style="text-align: center; color: white"><img  src="img/nxtview-logo.png" alt="NXTVIEW" style="height: 42px"></h3>                        
+                        <!--<h3 style="text-align: center; color: white"><img  src="img/logo-datec.png" alt="SOADRE" style="height: 30%"></h3>-->                        
+                        <h1 style="text-align: center; color: whitesmoke">SOADRE</h1>                        
                         <input name="usuario" type="text" class="form-control input-xs" style="margin-bottom: 5px" placeholder="Correo" required autofocus>
-                    
+
                         <input name="contrasena" type="password" class="form-control" style="margin-bottom: 5px" placeholder="Contraseña" required>
-                    
+
                         <button class="btn btn-primary btn-block" type="submit">Ingresar</button>                                
                     </div>
                 </div>
             </div>
         </form>
-        
-        <div style="position: absolute; bottom: 10px; text-align: center; width: 100%">
-            <h6 style="text-align: center; color: white; margin-bottom: 0px; font-size: 10px">Powered by</h6>
-            <a href="http://www.nxtview.com/">
-                <img src="img/nxtview-logo-blanco.png" alt="Nxtview" height="35px">
-            </a>
-        </div>
+
+
+        <nav class="navbar navbar-collapse navbar-fixed-bottom text-center" role="navigation">
+            <div class="container">
+                <img src="img/logo-datec.png" alt="DATEC" height="15%">
+            </div>
+        </nav>
     </body>
 </html>
 

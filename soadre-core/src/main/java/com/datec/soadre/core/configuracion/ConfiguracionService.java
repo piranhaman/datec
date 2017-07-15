@@ -29,7 +29,7 @@ public class ConfiguracionService {
 
     @Value("${app.name:}")
     private String appName;
-    private final String CARPETA_BASE = System.getProperty("user.home")+"/soadre";
+    private final String CARPETA_BASE = "/archivos/archivos-aplicaciones";
 
     @Bean
     @Lazy(true)

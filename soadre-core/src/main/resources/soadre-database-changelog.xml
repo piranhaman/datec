@@ -23,7 +23,7 @@ and open the template in the editor.
     </changeSet>
     <changeSet author="daniel.gonzalez" id="2017-06-11_12:49">
         <sql>
-            insert into Usuario (nombre, tipoUsuario, pass, status) values ("Admin", "ADMINISTRADOR", "123456", "ACTIVO");
+            insert into Usuario (nombre, tipoUsuario, pass, status) values ("Admin", "ADMINISTRADOR", "$2a$10$clodJ1eBbjxbIcmajoGWYe7wE.nLCb.GIX1IH2QGCS6L6PnSPY.j6", "ACTIVO");
         </sql>
     </changeSet>
     <changeSet author="daniel.gonzalez" id="2017-06-24_12:01">

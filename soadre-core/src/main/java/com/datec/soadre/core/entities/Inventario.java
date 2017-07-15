@@ -40,7 +40,6 @@ public class Inventario implements Serializable {
     public void setCantidadFinal(Double cantidadFinal) { this.cantidadFinal = cantidadFinal; }
     private Double cantidadFinal;
     
-    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     public LocalDate getFecha() { return fecha; }
     public void setFecha(LocalDate fecha) { this.fecha = fecha; }
     private LocalDate fecha;

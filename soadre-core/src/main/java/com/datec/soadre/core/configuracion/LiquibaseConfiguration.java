@@ -21,7 +21,6 @@ public class LiquibaseConfiguration {
     private DataSourceConfiguration dataSourceConfiguration;
 
     @Bean
-    @PostConstruct
     public SpringLiquibase liquibase() {
         SpringLiquibase liquibase = new SpringLiquibase();
         liquibase.setDataSource(dataSourceConfiguration.dataSource());

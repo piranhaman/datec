@@ -31,7 +31,7 @@ public class AutenticacionService {
             throw new UsernameNotFoundException("No existe un usuario con el nombre: "+nombre);
         }
         List<GrantedAuthority> auths = new ArrayList<GrantedAuthority>();
-        User user = new User(nombre, nombre, auths);
+        User user = new User(nombre, usuario.getPass(), auths);
         return user;
     }
 }

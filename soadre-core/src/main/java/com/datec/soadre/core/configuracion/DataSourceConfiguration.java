@@ -38,7 +38,6 @@ public class DataSourceConfiguration {
         dataSource.setJdbcUrl(configuration.getDatabaseUrl());
         dataSource.setUser(configuration.getDatabaseUser());
         dataSource.setPassword(configuration.getDatabasePassword());
-
         dataSource.setTestConnectionOnCheckout(true);
         try {
             dataSource.setDriverClass("com.mysql.jdbc.Driver");
