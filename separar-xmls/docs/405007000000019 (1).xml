@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Call xsi:noNamespaceSchemaLocation="GenericAdapterScheme.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Data>
+    <audio>
+      <audio_segement>
+        <channel_id>0</channel_id><!--generarlo y poner valor de colocar -->
+        <recording_order>1</recording_order> <!--generarlo y poner valor de 1-->
+        <audio_url>G:\405007\2013\2013-1\405007000000019.wav</audio_url> <!--G:\banortecalls\2020\file name (tomar valor de file name, ejemplo: C37659230.wav)-->
+        <StartTime>2013-01-16T12:08:47.127-06:00</StartTime> <!--RecordingDateTime aa-mm-ddThh:mm:ss.000-06:00-->
+        <Duration>271</Duration><!--RecordingLength sss-->
+      </audio_segement>
+    </audio>
+    <direction>0</direction><!--generarlo y  poner valor de 2-->
+    <number_of_holds>0</number_of_holds> <!--generarlo y  poner valor de 0-->
+    <number_of_conferences>0</number_of_conferences> <!--generarlo y  poner valor de 0-->
+    <number_of_transfers>0</number_of_transfers> <!--generarlo y  poner valor de 0-->
+    <total_hold_time>0</total_hold_time> <!--generarlo y  poner valor de 0-->
+    <extension>5232701</extension> <!--tomar el valor numérico de Agentid ejemplo = 8038345-->
+    <time_offset></time_offset> <!--generarlo y poner valor de -300-->
+    <pbx_login_id>2013</pbx_login_id> <!--tomar el valor numérico de Agentid-->
+    <switch_name>Import Manager</switch_name> <!--generarlo y poner el valor de BanorteCob-->
+    <agent_name></agent_name> <!--tomar el valor alfanumerico de Agentid -->
+    <group_name>V110</group_name> <!--poner valor de Service-->
+    <ani></ani> <!--tomarlo de CalledPartyarty-->
+    <dnis></dnis> <!--tomarlo de Dnis-->
+    <unique_identifier>Ang19</unique_identifier> <!--tomarlo de RecordingId-->
+  </Data>
+  <Custom_Data>
+    <custom_data_01>Angel</custom_data_01><!--Tomarlo de Disposition-->
+    <custom_data_02></custom_data_02><!--Tomarlo de Parmeter3-->
+    <custom_data_03></custom_data_03><!--Toamrlo de Parameter1-->
+    <custom_data_04></custom_data_04><!--Tomarlo de Parameter2-->
+    <custom_data_05>V110</custom_data_05><!--tomarlo de Service-->
+    <custom_data_06></custom_data_06><!--tomarlo de parameter9-->
+    <custom_data_07></custom_data_07><!--tomarlo de parameter10-->
+    <custom_data_08></custom_data_08><!--tomarlo de parameter11-->
+    <custom_data_09></custom_data_09><!--dejarlo en blanco-->
+    <custom_data_10></custom_data_10><!--dejarlo en blanco-->
+    <custom_data_11></custom_data_11><!--dejarlo en blanco-->
+    <custom_data_12></custom_data_12><!--dejarlo en blanco-->
+    <custom_data_13></custom_data_13><!--dejarlo en blanco-->
+    <custom_data_17></custom_data_17><!--dejarlo en blanco-->
+    <custom_data_18></custom_data_18><!--dejarlo en blanco-->
+   </Custom_Data>
+</Call>

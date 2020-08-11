@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Recording>
+<Info>
+<RecordingId>37659230</RecordingId>Indice de la grabacion
+<RecordingDateTime>2020-06-06 21:56:44.000</RecordingDateTime>fecha y hora
+<Agent>A8038345</Agent>AgentID
+<Recorder>Auto</Recorder>
+<Filename>C37659230.wav</Filename>Nombre de grabacion
+<RecordingLength>5</RecordingLength>duracion segundos
+<RecordFileType>WAV</RecordFileType>
+<RecordFormat>Dialogic ADPCM</RecordFormat>
+<RecordSampleRate>8 kHz</RecordSampleRate>
+<RecordBitsPerSample>8</RecordBitsPerSample>
+</Info><CallData><CallId>6912</CallId>
+<CalledParty>5520006600</CalledParty>Numero  Tel   Tarjetahabiente
+<CallingParty></CallingParty>
+<Customer></Customer>
+<DNIS>0000</DNIS>
+<Service>ADICIONALES_PLUS</Service>Campaña, preventiva=paso fecha de pago, Nuevas Entradas=1 pago vencido, adicionales plus y adicionales resto
+<Disposition>TELEFONO NO CONTESTA</Disposition></CallData>Resultado de llamada
+<UserData>
+<Key1></Key1>
+<Key2></Key2>
+<Key3></Key3>
+<Parameter1>6</Parameter1>Tipo de credito, corresponde a TC
+<Parameter2>4931720034612456</Parameter2>Numero de Tarjeta
+<Parameter3>ROBERTO CARLOS NAVARRO GARCIA</Parameter3>Cliente
+<Parameter4>XXXX-XXXX-XXXX-2456</Parameter4>tarjeta
+<Parameter5></Parameter5>
+<Parameter6></Parameter6>
+<Parameter7></Parameter7>
+<Parameter8></Parameter8>
+<Parameter9>258</Parameter9>Saldo Vencido
+<Parameter10>12009</Parameter10>Saldo Total
+<Parameter11>438</Parameter11>Pago mínimo
+<Parameter12></Parameter12>
+<Parameter13></Parameter13>
+<Parameter14></Parameter14>
+<Parameter15></Parameter15>
+<Parameter16></Parameter16>
+<Parameter17></Parameter17>
+<Parameter18></Parameter18>
+<Parameter19></Parameter19>
+<Parameter20></Parameter20>
+</UserData>
+</Recording>
