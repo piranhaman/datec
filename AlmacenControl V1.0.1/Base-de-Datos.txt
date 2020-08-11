@@ -1,0 +1,140 @@
+drop database Almacen;
+
+create database Almacen;
+use almacen;
+
+create table usuarios(
+id int  NOT NULL AUTO_INCREMENT,
+nombre varchar(35),
+tipo varchar(15),
+pass varchar(35),
+primary key(id)
+);
+
+create table refacciones(
+id int  NOT NULL AUTO_INCREMENT,
+nombre varchar(45),
+codigo varchar(45),
+cantidad  int,
+pu numeric(8,2),
+primary key(id)
+);
+
+create table operador(
+id int  NOT NULL AUTO_INCREMENT,
+nombre varchar(60),
+domicilio varchar(120),
+telefono varchar(15),
+primary key(id)
+);
+
+create table servicio(
+id int NOT NULL AUTO_INCREMENT,
+idUsr int,
+fecha date,
+hora time,
+concepto varchar(500),
+solicitud int,
+CaTra varchar(20),
+nCaTra int,
+total numeric(8,2),
+kilo int,
+primary key(id),
+foreign key(idUsr) references usuarios(id)
+);
+
+create table servicioForaneo(
+id int NOT NULL AUTO_INCREMENT,
+idUsr int,
+fecha date,
+hora time,
+concepto varchar(1000),
+remison int,
+CaTra varchar(20),
+nCaTra int,
+total numeric(8,2),
+primary key(id),
+foreign key(idUsr) references usuarios(id)
+);
+
+create table consumo(
+idServ int,
+idRef int,
+cantidad int,
+pu numeric(8,2),
+costo numeric(8,2),
+foreign key(idServ) references servicio(id),
+foreign key(idRef) references refacciones(id)
+);
+
+create table mantenimiento(
+idServ int,
+idMec int,
+foreign key(idServ) references servicio(id),
+foreign key(idMec) references operador(id)
+);
+
+create table compra(
+id int NOT NULL AUTO_INCREMENT,
+idUsr int,
+remison int,
+fecha date,
+destino varchar(30),
+nCaTra int,
+idRef int,
+cantidad int,
+total numeric(8,2),
+totalRem numeric(8,2),
+primary key(id),
+foreign key(idRef) references refacciones(id),
+foreign key(idUsr) references usuarios(id)
+);
+
+create table sesion(
+id int NOT NULL AUTO_INCREMENT,
+idUsr int,
+fecha date,
+hora time,
+primary key(id),
+foreign key(idUsr) references usuarios(id)
+);
+
+
+
+
+DELIMITER $$
+
+
+
+
+CREATE TRIGGER `detalleVenta_AINS` AFTER INSERT ON `consumo` FOR EACH ROW BEGIN
+
+UPDATE refacciones SET cantidad = cantidad - New.cantidad where id=New.idRef;
+
+END
+$$
+
+
+
+DELIMITER $$
+
+
+
+
+CREATE TRIGGER `compra_AINS` AFTER INSERT ON `compra` FOR EACH ROW BEGIN
+
+IF New.destino='Almacen' THEN 
+UPDATE refacciones SET cantidad = cantidad + New.cantidad where id=New.idRef;
+
+END IF;
+END
+$$
+
+
+
+
+GRANT ALL PRIVILEGES ON `Almacen`.* TO 'almacen'@'192.168.1.%' IDENTIFIED BY '123456';
+
+
+
+
