@@ -14,7 +14,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <spring.version>4.2.5.RELEASE</spring.version>
+        <spring.version>4.2.7.RELEASE</spring.version>
         <spring.security.version>4.1.0.RELEASE</spring.security.version>
         <main.basedir>${basedir}</main.basedir>
     </properties>
